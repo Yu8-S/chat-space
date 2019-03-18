@@ -21,3 +21,15 @@
 ### Association
 - belongs_to :group, dependent => :destroy
 - belongs_to :user
+
+##  usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|nickname|text|null: false|
+|password|text|null: false|
+|e-mail|string|null: false|
+
+### Association
+- has_many :messages
+- has_many :groups, through :member

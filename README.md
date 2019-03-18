@@ -39,7 +39,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
+|groupname|string|null: false|
 
 
 ### Association

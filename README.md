@@ -33,3 +33,13 @@
 ### Association
 - has_many :messages
 - has_many :groups, through :member
+
+##  groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+
+### Association
+- has_many :messages
+- has_many :users, through :member

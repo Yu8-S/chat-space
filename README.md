@@ -26,7 +26,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|text|null: false|
+|nickname|string|null: false|
 |password|text|null: false|
 |e-mail|string|null: false|
 

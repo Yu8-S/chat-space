@@ -29,6 +29,7 @@
 |nickname|string|null: false, index: true, unique: true|
 |password|text|null: false|
 |e-mail|string|null: false|
+|member_id|integer|null: false|
 
 ### Association
 - has_many :messages

@@ -19,7 +19,7 @@
 |user_id|integer|null: false|
 
 ### Association
-- belongs_to :group, dependent => :destroy
+- belongs_to :group
 - belongs_to :user
 
 ##  usersテーブル

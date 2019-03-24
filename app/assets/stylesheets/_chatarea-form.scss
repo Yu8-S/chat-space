@@ -1,18 +1,18 @@
 .chatarea-form {
-  height: 50px;
   background-color: #ddd;
   padding: 20px 40px;
+  border-style: none;
   & form {
     display: flex;
     .input-box {
-      width: 435px;
       position: relative;
+      width: calc(100% - 115px);
       &__text {
         height: 50px;
-        width: 385px;
         border-style: none;
-        padding: 0 40px 0 10px;
         text-align: left;
+        padding: 0 40px 0 10px;
+        width: calc(100% - 50px);
       }
       &__image {
         position: absolute;

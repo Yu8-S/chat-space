@@ -4,12 +4,13 @@
 %div.sideber
   %div.sideber-header
     %div.sideber-header__box
-      %p.sideber-header__box__user-name test
+      %p.sideber-header__box__user-name =current_user.name
       %ul.sideber-header__box__menu
         %li.sideber-header__box__menu__edit-user
           %a.fa.fa-edit{href: 'http://'}
         %li.sideber-header__box__menu__new-group
-          %a.fa.fa-cog{href: 'http://'}
+          = link_tp edit_user_path(current_user) do
+            = fa_icon 'cog'
   %div.sideber-chatlist
     = render partial: "group"
     = render partial: "group"

@@ -1,0 +1,27 @@
+$sidebercolor: #ffffff;
+
+.sideber {
+  float: left;
+  width: 300px;
+  color: $sidebercolor;
+  &-chatlist {
+    background-color: #2f3e51;
+    overflow: scroll;
+    height: calc(100vh - 100px);
+    padding: 0 20px;
+    &__box {
+      margin: 20px 0 40px;
+      width: calc(300px - 40px);
+      font-weight: bold;
+      &__group-name {
+        font-size: 15px;
+        display: flex;
+        }
+      &__text {
+        font-size: 11px;
+        display: flex;
+        margin-top: 5px;
+      }
+    }
+  }
+}

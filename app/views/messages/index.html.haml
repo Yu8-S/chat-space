@@ -1,0 +1,36 @@
+%div.flash-box
+  %p グループを作成しました
+
+%div.sideber
+  %div.sideber-header
+    %div.sideber-header__box
+      %p.sideber-header__box__user-name test
+      %ul.sideber-header__box__menu
+        %li.sideber-header__box__menu__edit-user
+          %a.fa.fa-edit{href: 'http://'}
+        %li.sideber-header__box__menu__new-group
+          %a.fa.fa-cog{href: 'http://'}
+  %div.sideber-chatlist
+    = render partial: "group"
+    = render partial: "group"
+
+%div.chatarea
+  %div.chatarea-header
+    %div.chatarea-header__left-content
+      %h2.chatarea-header__left-content__group-name test
+      %ul.chatarea-header__left-content__member-list
+        %p Member :
+        %li.chatarea-header__left-content__member-list__member y
+    %a{href: 'http://'}
+      %div.chatarea-header_edit Edit
+  %div.chatarea-main
+    = render partial: "chat"
+    = render partial: "chat"
+  %div.chatarea-form
+    %form{action: "/", method: "post"}
+      %div.input-box
+        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
+        %label{class: "input-box__image", for: "message_image"}
+          %span.fa.fa-picture-o
+          %input{type: "file", class: "input-box__image__file", id: "message_image"}
+      %input{type: "submit", value: "Send", class: "submit"}

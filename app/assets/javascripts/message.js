@@ -28,5 +28,8 @@ $(function() {
       $('.input-box__text').val('')
       $('.input-box__image').val('')
     })
+    .fail(function(date) {
+      alert('非同期処理に失敗しました');
+    })
   })
 });

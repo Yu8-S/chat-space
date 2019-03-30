@@ -12,6 +12,7 @@
   %div.chatarea-main
     - @messages.each do |message|
       = render partial: "chat", locals: { message: message }
+    %p.chatarea-main__scroll
   %div.chatarea-form
     = form_for [@group, @message], html: {id: 'new_message'} do |f|
       %div.input-box

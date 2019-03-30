@@ -4,6 +4,7 @@ $sidebercolor: #ffffff;
   float: left;
   width: 300px;
   color: $sidebercolor;
+  position: fixed;
   &-chatlist {
     background-color: #2f3e51;
     overflow: scroll;
@@ -21,6 +22,7 @@ $sidebercolor: #ffffff;
         font-size: 11px;
         display: flex;
         margin-top: 5px;
+        margin-bottom: 40px;
       }
     }
   }

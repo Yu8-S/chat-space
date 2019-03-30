@@ -1,4 +1,9 @@
 %div.chatarea-main__user
-  %p.chatarea-main__user__name test-user
-  %p.chatarea-main__user__date 2019/03/23(Sat) 10:10:10
-%p.chatarea-main__text こんにちは
+  %p.chatarea-main__user__name
+    = message.user.name
+  %p.chatarea-main__user__date
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+%p.chatarea-main__text
+  - if message.body.present?
+    = message.body
+  = image_tag message.image.url if message.image.present?

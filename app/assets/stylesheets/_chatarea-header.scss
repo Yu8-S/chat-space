@@ -6,6 +6,8 @@
     background-color: #FFFFFF;
     border: thin solid #eeeeee;
     height: 100px;
+    position: fixed;
+    width: calc(100vw - 300px);
     &__left-content {
       float: left;
       &__group-name {

@@ -22,5 +22,11 @@ $(function() {
       processData: false,
       contentType: false
     })
+    .done(function(date) {
+      var html = buildHTML(date);
+      $('.chatarea-main__user').append(html)
+      $('.input-box__text').val('')
+      $('.input-box__image').val('')
+    })
   })
 });

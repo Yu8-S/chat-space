@@ -1,13 +1,14 @@
 $(function() {
   function buildHTML(message) {
-    var html = `%p.chatarea-main__user__name
-                 = message.user.name
-                   %p.chatarea-main__user__date
+    var html = `%div.chatarea-main__user
+                  %p.chatarea-main__user__name
+                    = message.user.name
+                  %p.chatarea-main__user__date
                      = message.created_at.strftime("%Y/%m/%d %H:%M")
-                   %p.chatarea-main__text
-                     - if message.body.present?
-                       = message.body
-                       = image_tag message.image.url if message.image.present?`
+                %p.chatarea-main__text
+                  - if message.body.present?
+                    = message.body
+                    = image_tag message.image.url if message.image.present?`
   }
 
   $('#new_message').on('submit', function(e) {
@@ -24,9 +25,10 @@ $(function() {
     })
     .done(function(date) {
       var html = buildHTML(date);
-      $('.chatarea-main__user').append(html)
+      $('.chatarea-main').append(html)
       $('.input-box__text').val('')
       $('.input-box__image').val('')
+      $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight }, 'fast');
     })
     .fail(function(date) {
       alert('非同期処理に失敗しました');

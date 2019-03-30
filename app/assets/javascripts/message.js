@@ -26,8 +26,7 @@ $(function() {
     .done(function(date) {
       var html = buildHTML(date);
       $('.chatarea-main').append(html)
-      $('.input-box__text').val('')
-      $('.input-box__image').val('')
+      $('#new_message')[0].reset()
       $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight }, 'fast');
     })
     .fail(function(date) {

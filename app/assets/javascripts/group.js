@@ -42,7 +42,7 @@ $(function() {
     })
   })
 
-  $(document).on('click', 'a', function() {
+  $('#user-search-result').on('click', 'a', function() {
     var name = $(this).attr('data-user-name')
     var id = $(this).attr('data-user-id')
     addMember(id, name)

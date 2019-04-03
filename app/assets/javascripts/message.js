@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var html = `%div.chatarea-main__user
+    var html = `%div.chatarea-main__user{data-id: “${ message.message_id }”}
                   %p.chatarea-main__user__name
                     = message.user.name
                   %p.chatarea-main__user__date

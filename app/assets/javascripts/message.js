@@ -1,30 +1,84 @@
 $(function() {
   function buildHTML(message) {
-    var html = `%div.chatarea-main__user{data-id: “${ message.message_id }”}
-                  %p.chatarea-main__user__name
-                    = message.user.name
-                  %p.chatarea-main__user__date
-                     = message.created_at.strftime("%Y/%m/%d %H:%M")
-                %p.chatarea-main__text
-                  - if message.body.present?
-                    = message.body
-                    = image_tag message.image.url if message.image.present?`
+    var html = `<div class=chatarea-main__user id=chatarea-main__user data-id="${ message.id }">
+                  <p class=chatarea-main__user__name>${message.user_name}</p>
+                  <p class=chatarea-main__user__date>${message.created_at}</p>
+                </div>
+                <p class=chatarea-main__text>${message.body}</p>`
+    return html
   }
 
+  var buildMessageHTML = function(message) {
+    if (message.body && message.image.url) {
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<p class="lower-message__content">' +
+            message.body +
+          '</p>' +
+          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+        '</div>' +
+      '</div>'
+    } else if (message.body) {
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<p class="lower-message__content">' +
+            message.body +
+          '</p>' +
+        '</div>' +
+      '</div>'
+    } else if (message.image.url) {
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+        '</div>' +
+      '</div>'
+    };
+    return html;
+  };
+
   $('#new_message').on('submit', function(e) {
-    e.preventDefaul();
-    var formData = new FormData(this);
-    var href = window.location.href + '/message'
+    e.preventDefault();
+    var form = $('#new_message');
+    var $this = $(this);
+
+    $('.submit').removeAttr('data-disable-with');
+
+    var formData = new FormData($this.get(0));
     $.ajax ({
-      url: href,
+      url: location.href,
       type: "POST",
       data: formData,
       dataType: "json",
       processData: false,
       contentType: false
     })
-    .done(function(date) {
-      var html = buildHTML(date);
+    .done(function(data) {
+      var html = buildHTML(data);
+      console.log(html);
       $('.chatarea-main').append(html)
       $('#new_message')[0].reset()
       $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight }, 'fast');
@@ -33,4 +87,26 @@ $(function() {
       alert('非同期処理に失敗しました');
     })
   })
+
+  var reloadMessages = function() {
+    var last_message_id = $('#chatarea-main__user').data('id');
+    console.log(last_message_id);
+    $.ajax({
+      url: location.href,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(insertHTML, messsage) {
+        var html = buildMessageHTML(insertHTML)
+        $('.chatarea-main').append(html)
+      })
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+  setInterval(reloadMessages, 5000);
 });

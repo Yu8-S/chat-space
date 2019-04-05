@@ -1,5 +1,5 @@
 class Api::MessagesController < ApplicationController
   def index
-    @messages = Message.where(message.id > id)
+    @messages = Message.where(('id > ?', params[:message_id]))
   end
 end

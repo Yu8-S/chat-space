@@ -81,7 +81,8 @@ $(function() {
       console.log(html);
       $('.chatarea-main').append(html)
       $('#new_message')[0].reset()
-      $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight }, 'fast');
+      $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight });
+      return false
     })
     .fail(function(date) {
       alert('非同期処理に失敗しました');
@@ -102,10 +103,15 @@ $(function() {
       $.each(messages, function(insertHTML, messsage) {
         var html = buildMessageHTML(insertHTML)
         $('.chatarea-main').append(html)
+        $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight });
+      return false
       })
     })
-    .fail(function() {
+    .fail(function(XMLHttpRequest, testStatus, errorThrown) {
       console.log('error');
+      console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+      console.log("textStatus     : " + textStatus);
+      console.log("errorThrown    : " + errorThrown.message);
     });
   };
   setInterval(reloadMessages, 5000);

@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var html = `<div class=chatarea-main__user id=chatarea-main__user data-id="${ message.id }">
+    var html = `<div class=chatarea-main__user id=chatarea-main__user data-id='${ message.id }'>
                   <p class=chatarea-main__user__name>${message.user_name}</p>
                   <p class=chatarea-main__user__date>${message.created_at}</p>
                 </div>
@@ -90,29 +90,31 @@ $(function() {
   })
 
   var reloadMessages = function() {
-    var last_message_id = $('#chatarea-main__user').data('id');
+    var last_message_id = $('#chatarea-main__user:last').data('id');
     console.log(last_message_id);
     $.ajax({
       url: location.href,
       type: 'get',
       dataType: 'json',
-      data: {message_id: last_message_id}
+      data: {
+        message: { id: last_message_id }
+      }
     })
     .done(function(messages) {
       var insertHTML = '';
       $.each(messages, function(insertHTML, messsage) {
-        var html = buildMessageHTML(insertHTML)
+        var html = buildMessageHTML(insertHTML);
         $('.chatarea-main').append(html)
         $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight });
       return false
       })
     })
-    .fail(function(XMLHttpRequest, testStatus, errorThrown) {
+    .fail(function(XMLHttpRequest, textStatus, errorThrown) {
       console.log('error');
       console.log("XMLHttpRequest : " + XMLHttpRequest.status);
       console.log("textStatus     : " + textStatus);
       console.log("errorThrown    : " + errorThrown.message);
     });
   };
-  setInterval(reloadMessages, 5000);
+  setInterval(reloadMessages, 20000);
 });

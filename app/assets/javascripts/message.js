@@ -57,6 +57,7 @@ $(function() {
       $.each(data, function(i, data) {
         var html = buildMessageHTML(data);
         $('.chatarea-main').append(html)
+        $('.chatarea-main').animate({ scrollTop:$('.chatarea-main')[0].scrollHeight });
       })
     })
     .fail(function(XMLHttpRequest, textStatus, errorThrown) {

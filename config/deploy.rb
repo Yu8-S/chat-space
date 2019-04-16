@@ -1,8 +1,4 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
-
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -41,6 +37,7 @@ set :repo_url, "git@example.com:me/my_repo.git"
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
+
 set :application, 'chat-space'
 set :repo_url,  'git@github.com:Yu8-S/chat-space.git'
 
@@ -55,6 +52,8 @@ set :ssh_options, auth_methods: ['publickey'],
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
+
+set :linked_files, %w{ config/secrets.yml }
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do

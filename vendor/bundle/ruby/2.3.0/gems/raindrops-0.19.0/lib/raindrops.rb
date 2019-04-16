@@ -30,13 +30,6 @@ class Raindrops
   # queue of a given listen socket.
   #
   # These stats are currently only available under \Linux
-  # class ListenStats < Struct.new(:active, :queued)
-
-  #   # the sum of +active+ and +queued+ sockets
-  #   def total
-  #     active + queued
-  #   end
-  # end
 
   autoload :Linux, 'raindrops/linux'
   autoload :Struct, 'raindrops/struct'

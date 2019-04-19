@@ -1,4 +1,4 @@
-app_path = File.expand_path('../../', __FILE__)
+app_path = File.expand_path('../../../', __FILE__)
 
 worker_processes 1
 
@@ -46,4 +46,3 @@ end
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
-

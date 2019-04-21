@@ -1,28 +1,33 @@
 $graycolor: #434a54;
 
-.chatarea-main {
-  padding: 0 40px;
-  background-color: #fafafa;
-  height: calc(100vh - 90px);
-  &__user {
-    padding: 46px 0 10px;
-    display: flex;
-    &__name {
+.chatarea {
+  height: calc(100vh - 90px -100px);
+  padding-bottom: 90px;
+  &-main {
+    margin-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 40px;
+    background-color: #fafafa;
+    overflow: auto;
+    &__user {
+      padding: 46px 0 10px;
+      display: flex;
+      &__name {
+        color: $graycolor;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__date {
+        color: #999999;
+        font-size: 12px;
+        margin-left: 10px;
+        display: inline-block;
+      }
+    &__text {
+      font-size: 14px;
       color: $graycolor;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &__date {
-      color: #999999;
-      font-size: 12px;
-      margin-left: 10px;
-      display: inline-block;
-    }
-  &__text {
-    font-size: 14px;
-    color: $graycolor;
-    margin-bottom: 40px;
+      margin-bottom: 40px;
+      }
     }
   }
 }
-

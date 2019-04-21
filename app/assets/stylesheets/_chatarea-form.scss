@@ -3,7 +3,9 @@
   padding: 20px 40px;
   border-style: none;
   position: fixed;
-  width: 80%;
+  bottom: 0px;
+  right: 0px;
+  width: calc(100vw - 300px - 80px);
   & form {
     display: flex;
     .input-box {

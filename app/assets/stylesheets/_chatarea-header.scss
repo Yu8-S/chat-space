@@ -1,5 +1,5 @@
 .chatarea {
-  width: calc(100vw - 300px);
+  width: calc(100% - 300px);
   float: right;
   &-header {
     padding: 0 40px;
@@ -7,7 +7,7 @@
     border: thin solid #eeeeee;
     height: 100px;
     position: fixed;
-    width: calc(100vw - 300px);
+    width: calc(100vw - 300px - 80px);
     &__left-content {
       float: left;
       &__group-name {
